@@ -1,3 +1,8 @@
+/*
+Calling countLetters(counter, sample_text) will populate the counter object with a count of how many times letters occur
+countLetters will call itself until all letters are counted
+*/
+
 var sample_text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod \
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \
@@ -13,10 +18,19 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
-  // FIX ME
+  //make input lowerCase
+  //for each character, check if its in counter. if so, increment that letter.
+  var currentLetter = sample_text.charAt( 0 );
+
+  if( sample_text.length === 0 ){
+    return counter;
+  } else if( currentLetter in counter ){
+    counter[ currentLetter ]++;
+  }
+  return countLetters( counter, sample_text.slice( 1 ) );
 }
 
 $(document).ready(function(){
